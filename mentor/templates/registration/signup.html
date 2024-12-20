@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 70px); background-color: #f8f9fa;">
+        <div style="background: #ffffff; border-radius: 8px; padding: 30px; max-width: 400px; width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h1 style="margin-bottom: 20px; font-size: 24px; color: #333;">Create Your Account</h1>
+
+
+            <form action="" method="POST" role="form">
+              {% csrf_token %}
+              <div>
+                <label for="name" style="display: block; margin-bottom: 5px; color: #555;">Full Name</label>
+                <!-- <input type="text" id="name" name="name" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+                {{ form.username }}
+              </div>
+              <div>
+                <label for="email" style="display: block; margin-bottom: 5px; color: #555;">Email Address</label>
+                {{ form.email }}
+                <!-- <input type="email" id="email" name="email" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+              </div>
+              <div>
+                <label for="password" style="display: block; margin-bottom: 5px; color: #555;">Password</label>
+                {{ form.password }}
+                <!-- <input type="password" id="password" name="password" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+              </div>
+              <div>
+                <label for="confirm-password" style="display: block; margin-bottom: 5px; color: #555;">Confirm Password</label>
+                {{ form.confirm_password }}
+                <!-- <input type="password" id="confirm-password" name="confirm-password" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+                </div>
+              </div>
+                <button type="submit" name="action" style="background: #5fcf80; color: white; border: none; padding: 15px; width: 100%; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">Sign Up</button>
+
+                <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="signin.html" style="color: #5fcf80; text-decoration: none; font-weight: 500;">Sign In</a></p>
+            </form>
+        </div>
+    </main>
+    {% endblock %}

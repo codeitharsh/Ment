@@ -17,6 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import Home
+from django.contrib import admin
+from django.urls import path, include
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+from authy.views import user_profile
+from classroom.views import index,Categories
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home.as_view(), name='home'),
@@ -27,4 +36,14 @@ urlpatterns = [
     path('resume_building/', include('resume_building.urls')),
     path('roadmaps/', include('roadmaps.urls')),
     path('skill_assessment/', include('skill_assessment.urls')),
-]
+
+    path('user/', include('authy.urls')),
+    path('course/', include('classroom.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('direct/', include('direct.urls')),
+    path('<username>', user_profile, name='profile'),
+    path('user/login', index, name='index')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+

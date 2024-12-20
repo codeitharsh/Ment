@@ -1,148 +1,92 @@
-
-
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-Recommended Courses - MENTOR
-{% endblock title %}
-  
+{% block title %}Coursera Course Recommendation System{% endblock %}
 
-{% block style %}
-<style>
-  /* Additional CSS for the Recommended Courses section */
-  .recommended-courses {
-      background-color: var(--surface-color);
-      padding: 40px 0;
-      text-align: center;
-  }
-
-  .recommended-courses h2 {
-      color: var(--heading-color);
-      font-family: var(--heading-font);
-      font-size: 24px;
-      margin-bottom: 20px;
-  }
-
-  .courses-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 0 20px;
-  }
-
-  .course-card {
-      background-color: var(--background-color);
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      overflow: hidden;
-      width: calc(25% - 20px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-  }
-
-  .course-card:hover {
-      transform: scale(1.05);
-  }
-
-  .course-card img {
-      width: 100%;
-      height: auto;
-  }
-
-  .course-card .course-info {
-      padding: 15px;
-      text-align: left;
-  }
-
-  .course-card .course-info h3 {
-      font-size: 18px;
-      color: var(--heading-color);
-      margin: 0 0 10px;
-  }
-
-  .course-card .course-info p {
-      font-size: 14px;
-      color: var(--default-color);
-  }
-
-  .btn-learn-more {
-      display: inline-block;
-      padding: 10px 15px;
-      font-size: 14px;
-      color: var(--contrast-color);
-      background: var(--accent-color);
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background 0.3s;
-  }
-
-  .btn-learn-more:hover {
-      background: color-mix(in srgb, var(--accent-color), transparent 15%);
-  }
-
-  @media (max-width: 992px) {
-      .course-card {
-          width: calc(50% - 20px);
-      }
-  }
-
-  @media (max-width: 768px) {
-      .course-card {
-          width: calc(100% - 20px);
-      }
-  }
-</style>
-{% endblock style %}
+    {% block style %}
 
 
-{% block content %}
-          <!-- Recommended Courses Section -->
-          <section class="recommended-courses">
-            <h2>Recommended Courses for You</h2>
-            <div class="courses-container">
-                <!-- Course Card 1 -->
-                <div class="course-card">
-                    <img src="{% static 'assets/img/course-1.jpg' %}" alt="Course 1">
-                    <div class="course-info">
-                        <h3>Introduction to AI</h3>
-                        <p>Learn the fundamentals of artificial intelligence and machine learning.</p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #5fcf80;
+        }
+        h4 {
+            color: black;
+        }
+        form {
+            margin-top: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #5fcf80;
+            color: black;
+            border: none;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5fcf80;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        div.courses_list ul li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        h6 {
+            color: red;
+            margin-top: 50px;
+        }
+    </style>
+    {% endblock style %}
+    {% block content %}
+    <!-- Page-specific content goes here -->
 
-                <!-- Course Card 2 -->
-                <div class="course-card">
-                    <img src="{% static 'assets/img/course-2.jpg' %}" alt="Course 2">
-                    <div class="course-info">
-                        <h3>Data Science Essentials</h3>
-                        <p>Master the basics of data science and data analysis.</p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
+<body>
+    <h2>Coursera Course Recommendation System</h2>
 
-                <!-- Course Card 3 -->
-                <div class="course-card">
-                    <img src="{% static 'assets/img/course-3.jpg' %}" alt="Course 3">
-                    <div class="course-info">
-                        <h3>Advanced Machine Learning</h3>
-                        <p>Dive deeper into advanced machine learning techniques and models.</p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
 
-                <!-- Course Card 4 -->
-                <div class="course-card">
-                    <img src="{% static 'assets/img/course-4.jpg' %}" alt="Course 4">
-                    <div class="course-info">
-                        <h3>AI for Business</h3>
-                        <p>Explore how artificial intelligence can be applied in business environments.</p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-{% endblock content %}
-  
- 
+    <form method="post">
+        {% csrf_token %}
+        <label for="selected_course">Type or select a course you like:</label>
+        <select name="selected_course" id="selected_course">
+            {% for course in courses_list %}
+                <option value="{{ course }}">{{ course }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Show Recommended Courses</button>
+    </form>
+<div class="courses_list">
+    {% if recommended_course_names %}
+        <h3>Recommended Courses based on your interests are:</h3>
+        <ul >
+            {% for course in recommended_course_names %}
+                <li>{{ course }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+    <h6>Copyright reserved by Coursera and Respective Course Owners</h6>
+    {% endblock %}

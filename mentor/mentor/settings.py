@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +47,18 @@ INSTALLED_APPS = [
     "roadmaps",
     "skill_assessment",
     "courses",
+
+    'ckeditor',
+    'ckeditor_uploader',
+    'authy',
+    'classroom',
+    'module',
+    'page',
+    'quiz',
+    'assignment',
+    'question',
+    'completion',
+    'direct',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +145,22 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+
 # For production, collect all static files in one directory (optional)
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+#3rd party apps:
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+
+#Login
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/user/login'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
