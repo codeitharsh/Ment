@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body class="trainers-page">
+
+
+    <main style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 70px); background-color: #f8f9fa;">
+        <div style="background: #ffffff; border-radius: 8px; padding: 30px; max-width: 400px; width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h1 style="margin-bottom: 20px; font-size: 24px; color: #333;">Welcome Back to MENTOR!</h1>
+
+
+
+            <form method="post" action="" role="form">
+              {% csrf_token %}
+              <div>
+                <label for="username" style="display: block; margin-bottom: 5px; color: #555;">Username</label>
+                {{ form.username }}
+                <!-- <input type="email" id="email" name="email" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+              </div>
+                <div>
+                <label for="password" style="display: block; margin-bottom: 5px; color: #555;">Password</label>
+                {{ form.password }}
+                <!-- <input type="password" id="password" name="password" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;"> -->
+                </div>
+                {% if form.errors %}
+                <div class="row">
+                  <div class="col s12">
+                    <span style="color: red; font-weight: bold;">Your username or password did not match.</span>
+                  </div>
+                </div>
+                {% endif %}
+                <a href="#" style="color: #5fcf80; text-decoration: none; font-weight: 500;">Forgot Password?</a>
+
+                <button type="submit" value="login" style="background: #5fcf80; color: white; border: none; padding: 10px; width: 100%; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">Login</button>
+
+                <!-- <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <button class="social-btn" style="background: #f1f1f1; border: none; padding: 10px; margin-top: 10px; width: 30%; border-radius: 4px; cursor: pointer; font-size: 14px; transition: background-color 0.3s;">Sign in with Google</button>
+                    <button class="social-btn" style="background: #f1f1f1; border: none; padding: 10px;margin-top: 10px; width: 30%; border-radius: 4px; cursor: pointer; font-size: 14px; transition: background-color 0.3s;">Sign in with Facebook</button>
+                    <button class="social-btn" style="background: #f1f1f1; border: none; padding: 10px;margin-top: 10px; width: 30%; border-radius: 4px; cursor: pointer; font-size: 14px; transition: background-color 0.3s;">Sign in with LinkedIn</button>
+                </div> -->
+                <input type="hidden" name="next" value="{{ next }}">
+                <p style="text-align: center;">New to MENTOR? <a href="{% url 'signup' %}" style="color: #5fcf80; text-decoration: none; font-weight: 500;">Create an account</a></p>
+            </form>
+
+
+
+
+        </div>
+    </main>
+    {% endblock %}

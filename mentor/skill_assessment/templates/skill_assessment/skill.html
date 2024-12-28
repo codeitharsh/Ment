@@ -1,0 +1,190 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Skill Assesment - MENTOR
+{% endblock title %}
+  
+
+{% block style %}
+<style>
+    /* Custom CSS for Skill Assessment */
+    .skill-assessment-section {
+        background-color: var(--surface-color);
+        padding: 40px 0;
+    }
+
+    .skill-assessment-section h2 {
+        text-align: center;
+        color: var(--heading-color);
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .assessment-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .assessment-card {
+        background-color: var(--background-color);
+        border-radius: 10px;
+        padding: 30px;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .assessment-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .assessment-card h3 {
+        font-size: 22px;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+    }
+
+    .assessment-card p {
+        font-size: 14px;
+        color: var(--default-color);
+        margin-bottom: 20px;
+    }
+
+    .start-assessment {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .start-assessment:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: var(--surface-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50%;
+        background-color: var(--accent-color);
+        clip-path: inset(0 0 0 50%);
+        animation: fill-progress 2s ease forwards;
+    }
+
+    @keyframes fill-progress {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(180deg);
+        }
+    }
+
+    .progress-text {
+        font-size: 20px;
+        color: var(--heading-color);
+        font-weight: 600;
+    }
+
+    /* AOS Animations */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .assessment-card {
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock style %}
+    
+  
+
+{% block content %}
+      <!-- Main Content -->
+      <main>
+        <!-- Skill Assessment Section -->
+        <section class="skill-assessment-section" id="assessment">
+            <h2>Evaluate Your Skills</h2>
+
+            <div class="assessment-container">
+
+                <!-- Assessment Card 1 -->
+                <div class="assessment-card" data-aos="fade-up">
+                    <div class="progress-circle">
+                        <div class="progress-bar" style="transform: rotate(120deg);"></div>
+                        <div class="progress-text">60%</div>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Test your knowledge and understanding of AI concepts, algorithms, and their practical applications.</p>
+                    <a href="#" class="start-assessment">Start Assessment</a>
+                </div>
+
+                <!-- Assessment Card 2 -->
+                <div class="assessment-card" data-aos="fade-up">
+                    <div class="progress-circle">
+                        <div class="progress-bar" style="transform: rotate(90deg);"></div>
+                        <div class="progress-text">45%</div>
+                    </div>
+                    <h3>Data Science & Analytics</h3>
+                    <p>Assess your skills in data analysis, statistics, and visualization, along with tools like Python and R.</p>
+                    <a href="#" class="start-assessment">Start Assessment</a>
+                </div>
+
+                <!-- Assessment Card 3 -->
+                <div class="assessment-card" data-aos="fade-up">
+                    <div class="progress-circle">
+                        <div class="progress-bar" style="transform: rotate(150deg);"></div>
+                        <div class="progress-text">75%</div>
+                    </div>
+                    <h3>Programming & Software Development</h3>
+                    <p>Evaluate your programming skills in languages such as Python, Java, and more. Test your problem-solving ability.</p>
+                    <a href="#" class="start-assessment">Start Assessment</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+  
+
+
+{% block script %}
+  
+{% endblock script %}
+  

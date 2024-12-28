@@ -1,0 +1,27 @@
+<header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto">
+            <h1 class="sitename">MENTOR</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="{% url 'home' %}" class="active">Home</a></li>
+                <!-- <li><a href="#">About</a></li> -->
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+                <!-- <li><a href="#">Community</a></li> -->
+                <!-- <li><a href="{% url 'dashboard' %}">Dashboard</a></li> -->
+                <li class="dropdown"><a href="#"><span>AI Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="{% url 'course_recommendation' %}">Course Recommendations</a></li>
+                        <li><a href="{% url 'job_recommendation' %}">Job Recommendations</a></li>
+                        <li><a href="{% url 'roadmap' %}">Roadmap building</a></li>
+                        <li><a href="{% url 'skill_assessment' %}">Skill Assessment</a></li>
+                        <li><a href="{% url 'resume_builder' %}">Resume Building</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+        <a class="btn-getstarted" href="{% url 'login' %}">Get Started</a>
+    </div>
+</header>

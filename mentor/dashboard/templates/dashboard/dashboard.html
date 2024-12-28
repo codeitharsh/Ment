@@ -1,0 +1,170 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Recommended Courses - MENTOR
+{% endblock title %}
+  
+
+
+{% block style %}
+<style>
+    :root {
+        --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --heading-font: "Raleway", sans-serif;
+        --nav-font: "Poppins", sans-serif;
+
+        /* Global Colors */
+        --background-color: #ffffff;
+        --default-color: #444444;
+        --heading-color: #37423b;
+        --accent-color: #5fcf80;
+        --surface-color: #ffffff;
+        --contrast-color: #ffffff;
+
+        /* Nav Menu Colors */
+        --nav-color: #272828;
+        --nav-hover-color: #5fcf80;
+        --nav-mobile-background-color: #ffffff;
+        --nav-dropdown-background-color: #ffffff;
+        --nav-dropdown-color: #272828;
+        --nav-dropdown-hover-color: #5fcf80;
+    }
+
+    body {
+        color: var(--default-color);
+        background-color: var(--background-color);
+        font-family: var(--default-font);
+    }
+
+    .header {
+        color: var(--default-color);
+        background-color: var(--background-color);
+        padding: 20px 0;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 50px;
+        transition: all 0.5s;
+        z-index: 997;
+    }
+
+    .dashboard-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .card {
+        background-color: var(--surface-color);
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 20px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: var(--heading-color);
+        font-family: var(--heading-font);
+    }
+
+    .card p {
+        font-size: 48px;
+        color: var(--accent-color);
+        margin: 0;
+    }
+
+    .btn-update {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        margin-top: 25px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-update:hover {
+        background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    footer {
+        background: var(--nav-color);
+        color: var(--contrast-color);
+        text-align: center;
+        padding: 10px 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock style %}
+  
+
+
+{% block content %}
+  
+<main class="dashboard-container">
+  <!-- Card 1: Skills -->
+  <div class="card" data-aos="fade-up">
+      <h3>No. of Skills 
+          <br>Learned</h3>
+      <p>15</p>
+  </div>
+
+  <!-- Card 2: Assignments -->
+  <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <h3>No. of Assignments Done</h3>
+      <p>8</p>
+  </div>
+
+  <!-- Card 3: Courses Enrolled -->
+  <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h3>No. of Courses Enrolled</h3>
+      <p>5</p>
+  </div>
+
+  <!-- Card 4: Courses Completed -->
+  <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h3>No. of Courses Completed</h3>
+      <p>3</p>
+  </div>
+
+
+{% endblock content %}
+  

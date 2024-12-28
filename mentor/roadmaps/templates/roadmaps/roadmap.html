@@ -1,0 +1,204 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+AI Roadmap Building - MENTOR
+{% endblock title %}
+  
+
+
+{% block style %}
+<style>
+    /* Additional CSS for AI Roadmap Building Page */
+    .roadmap-section {
+        background-color: var(--surface-color);
+        padding: 40px 0;
+    }
+
+    .roadmap-section h2 {
+        text-align: center;
+        color: var(--heading-color);
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .search-bar input {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: var(--default-color);
+    }
+
+    .search-bar button {
+        padding: 12px 20px;
+        background: var(--accent-color);
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .search-bar button:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .roadmap-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .roadmap-step {
+        background-color: var(--background-color);
+        border-radius: 8px;
+        padding: 20px;
+        width: 100%;
+        max-width: 800px;
+        text-align: left;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .roadmap-step:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .roadmap-step h3 {
+        font-size: 22px;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+    }
+
+    .roadmap-step p {
+        font-size: 14px;
+        color: var(--default-color);
+        margin-bottom: 15px;
+    }
+
+    .progress-bar {
+        height: 8px;
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    .progress {
+        height: 100%;
+        background-color: var(--accent-color);
+        width: 0;
+        transition: width 1s ease;
+    }
+
+    .start-roadmap {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: white;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .start-roadmap:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    /* AOS Animation */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .roadmap-step {
+            padding: 15px;
+            max-width: 100%;
+        }
+    }
+</style>
+{% endblock style %}
+    
+
+{% block content %}
+<main>
+    <!-- AI Roadmap Section -->
+    <section class="roadmap-section" id="roadmap">
+        <h2>Build Your Career Roadmap</h2>
+
+        <!-- Search Bar -->
+        <div class="search-bar" data-aos="fade-up">
+            <input type="text" placeholder="Search field (e.g., Machine Learning, NLP)">
+            <button type="submit">Search</button>
+        </div>
+
+        <!-- Roadmap Steps -->
+        <div class="roadmap-container">
+            <!-- Step 1 -->
+            <div class="roadmap-step fade-up" data-aos="fade-up">
+                <h3>Step 1: Learn the Fundamentals</h3>
+                <p>Start with learning the basics of programming, mathematics, and statistics. These are essential for understanding AI concepts.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%;"></div>
+                </div>
+                <a href="#" class="start-roadmap">Start Learning</a>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="roadmap-step fade-up" data-aos="fade-up">
+                <h3>Step 2: Explore AI Specializations</h3>
+                <p>Decide on your area of focus: Machine Learning, Natural Language Processing, Computer Vision, etc.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 20%;"></div>
+                </div>
+                <a href="#" class="start-roadmap">Explore Now</a>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="roadmap-step fade-up" data-aos="fade-up">
+                <h3>Step 3: Hands-On Practice with Projects</h3>
+                <p>Start working on AI projects to apply your knowledge. Use real datasets and solve practical problems.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+                <a href="#" class="start-roadmap">Start Projects</a>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="roadmap-step fade-up" data-aos="fade-up">
+                <h3>Step 4: Advance to AI Research and Applications</h3>
+                <p>After mastering the basics, contribute to AI research or work on advanced AI applications in the industry.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 5%;"></div>
+                </div>
+                <a href="#" class="start-roadmap">Advance Now</a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+    

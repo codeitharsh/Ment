@@ -1,0 +1,219 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+AI Resume Builder with ATS Score - CareerMatch AI
+{% endblock title %}
+  
+
+
+{% block style %}
+
+<style>
+  /* Custom CSS for Resume Builder */
+  .resume-builder-section {
+      background-color: var(--surface-color);
+      padding: 50px 0;
+  }
+
+  .resume-builder-section h2 {
+      text-align: center;
+      color: var(--heading-color);
+      font-size: 28px;
+      margin-bottom: 20px;
+  }
+
+  .resume-form-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: var(--background-color);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .resume-form-container h3 {
+      font-size: 22px;
+      color: var(--heading-color);
+      margin-bottom: 20px;
+  }
+
+  .resume-form-container .form-group {
+      margin-bottom: 20px;
+  }
+
+  .resume-form-container .form-group label {
+      font-size: 16px;
+      color: var(--default-color);
+  }
+
+  .resume-form-container .form-group input,
+  .resume-form-container .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+  }
+
+  .resume-form-container .form-group textarea {
+      height: 120px;
+  }
+
+  .resume-form-container .form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .btn-submit {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s;
+  }
+
+  .btn-submit:hover {
+      background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  }
+
+  /* ATS Score Section */
+  .ats-score-section {
+      margin-top: 30px;
+      padding: 30px;
+      background-color: var(--background-color);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .ats-score {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--accent-color);
+  }
+
+  .ats-progress {
+      margin: 20px 0;
+      height: 20px;
+      border-radius: 10px;
+      background-color: #eee;
+      overflow: hidden;
+  }
+
+  .ats-progress-bar {
+      height: 100%;
+      background-color: var(--accent-color);
+      width: 75%; /* Adjust this dynamically based on ATS score */
+  }
+
+  .ats-feedback {
+      font-size: 14px;
+      color: var(--default-color);
+  }
+
+  /* Animation */
+  .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+  }
+</style>
+{% endblock style %}
+  
+
+{% block content %}
+      <!-- ======= Main Section ======= -->
+      <main id="main">
+
+        <!-- ======= AI Resume Builder Section ======= -->
+        <section id="resume-builder" class="resume-builder">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>AI Automated Resume Builder</h2>
+                    <p>Create a professional resume using AI and see how it scores with Applicant Tracking Systems (ATS).</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h3>Create Your Resume</h3>
+                        <p>Our AI helps you generate a resume that stands out to recruiters. Just fill in the details below.</p>
+
+                        <form action="#" method="post" class="php-email-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="skills">Skills</label>
+                                <textarea class="form-control" name="skills" id="skills" rows="4" placeholder="e.g., Python, Data Analysis, Machine Learning"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Experience</label>
+                                <textarea class="form-control" name="experience" id="experience" rows="4" placeholder="e.g., Software Engineer at XYZ Company"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="education">Education</label>
+                                <textarea class="form-control" name="education" id="education" rows="4" placeholder="e.g., B.Sc in Computer Science"></textarea>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Build Resume</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <h3>Check Your ATS Score</h3>
+                        <p>Upload your resume to see how well it performs with Applicant Tracking Systems.</p>
+
+                        <form action="#" method="post" enctype="multipart/form-data" class="php-email-form">
+                            <div class="form-group">
+                                <label for="resumeUpload">Upload Resume (PDF/DOC)</label>
+                                <input type="file" name="resume" class="form-control" id="resumeUpload" required>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Check ATS Score</button>
+                            </div>
+
+                            <!-- Placeholder for ATS score output -->
+                            <div class="ats-score mt-4" data-aos="zoom-in">
+                                <h4>ATS Score: <span id="score">85%</span></h4>
+                                <p>Your resume performs well for the applied position.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Resume Builder Section -->
+
+    </main><!-- End Main -->
+
+{% endblock content %}
+  
+
+{% block script %}
+<script>
+  AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+  });
+</script>
+{% endblock script %}
+  

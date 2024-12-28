@@ -1,0 +1,270 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Job Recommendations - MENTOR
+{% endblock title %}
+  
+
+{% block style %}
+<style>
+    /* Additional CSS for the Job Recommendations Page */
+    .job-recommendations {
+        background-color: var(--surface-color);
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .job-recommendations h2 {
+        font-size: 28px;
+        color: var(--heading-color);
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .search-bar input {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: var(--default-color);
+    }
+
+    .search-bar button {
+        padding: 12px 20px;
+        background: var(--accent-color);
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .search-bar button:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .jobs-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        height: 450px; ;
+    }
+
+    .job-card {
+        background-color: var(--background-color);
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        width: calc(30% - 20px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+    }
+
+    .job-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .job-card .job-info {
+        text-align: left;
+    }
+
+    .job-card h3 {
+        font-size: 20px;
+        color: var(--heading-color);
+        margin: 0 0 10px;
+    }
+
+    .job-card p {
+        font-size: 14px;
+        color: var(--default-color);
+        margin-bottom: 20px;
+    }
+
+    .job-card .job-tags {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+
+.job-card .job-tags span {
+background-color: #f1f1f1; /* Light background for the tags */
+color: #333; /* Dark text color for contrast */
+padding: 5px 10px; /* Adds padding for better visibility */
+border-radius: 20px; /* Rounded corners for a pill-like appearance */
+font-size: 14px; /* Ensures text is readable */
+font-weight: 500;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds subtle shadow */
+}
+
+
+    .job-card .btn-apply {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        padding: 10px;
+        margin-top: 40px;
+        background-color: var(--accent-color);
+        color: white;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .btn-apply:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    /* Animation on Scroll */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 992px) {
+        .job-card {
+            width: calc(45% - 20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .job-card {
+            width: calc(100% - 20px);
+        }
+    }
+</style>
+{% endblock style %}
+    
+{% block content %}
+<main>
+    <!-- Job Recommendations Section -->
+    <section class="job-recommendations" id="jobs">
+        <h2>Job Recommendations for You</h2>
+
+        <!-- Search Bar -->
+        <div class="search-bar" data-aos="fade-up">
+            <input type="text" placeholder="Search for a job title or skill...">
+            <button type="submit">Search</button>
+        </div>
+
+        <div class="jobs-container">
+            <!-- Job Card 1 -->
+            <div class="job-card fade-up" data-aos="fade-up">
+                <div class="job-info">
+                    <h3>Software Engineer</h3>
+                    <p>Google - Mountain View, CA</p>
+                    <div class="job-tags">
+                        <span>JavaScript</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="job-card fade-up" data-aos="fade-up">
+                <div class="job-info">
+                    <h3>Data Scientist</h3>
+                    <p>Amazon - Seattle, WA</p>
+                    <div class="job-tags">
+                        <span>Python</span>
+                        <span>Machine Learning</span>
+                        <span>Data Analysis</span>
+                    </div>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card fade-up" data-aos="fade-up">
+                <div class="job-info">
+                    <h3>UI/UX Designer</h3>
+                    <p>Facebook - San Francisco, CA</p>
+                    <div class="job-tags">
+                        <span>Figma</span>
+                        <span>Adobe XD</span>
+                        <span>Wireframes</span>
+                    </div>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="job-card fade-up" data-aos="fade-up">
+                <div class="job-info">
+                    <h3>DevOps Engineer</h3>
+                    <p>Microsoft - Redmond, WA</p>
+                    <div class="job-tags">
+                        <span>Azure</span>
+                        <span>CI/CD</span>
+                        <span>Docker</span>
+                    </div>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+            <div class="job-card fade-up" data-aos="fade-up">
+                <div class="job-info">
+                    <h3>Business Analyst</h3>
+                    <p>Delliote - Gurugram, India</p>
+                    <div class="job-tags">
+                        <span>Data Analysis</span>
+                        <span>SQL</span>
+                        <span>Advance Excel</span>
+                    </div>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
+
+
+{% block script %}
+<script>
+    // Initialize AOS animation
+    AOS.init();
+
+    // Scroll animations for job cards
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.fade-up');
+        window.addEventListener('scroll', function() {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    card.classList.add('show');
+                }
+            });
+        });
+    });
+</script>
+{% endblock script %}
+    
+    
+
